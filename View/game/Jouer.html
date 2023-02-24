@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Joue</title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <h2><span><i class="fa fa-trophy" aria-hidden="true"></i></span> MATKIDDO</h2>
+        <nav>
+          <ul>
+            <li><a href="../Triangle/learn/LearnTriangles.html">Triangle</a> </li>
+            <li><a href="../Rectangle/learn/LearnRectangle.html">Rectangle</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div style="display: flex;align-items: center">
+  <div class="options" style="background-color: #2AB7CA;height: 100px;width: 40%">
+    <p id="score" style="font-size: 32px">0 pts</p>
+  </div>
+  <div class="options" style="background-color: #FED766;height: 100px;width: 40%">
+    <p id="timer" style="font-size: 32px">30 s</p>
+  </div>
+  </div>
+  <div class="wrapper" >
+    <div class="equation" id="intro">
+      Essayer de choisir le bon type de la forme donneé <br>dans une dureé de 30 secondes<br>pour chaque fausse réponse : -5pts<br>
+      et pour chaque bonne réponse : 5pts
+      <button style="margin-top: 400px;margin-right: -50px;cursor: pointer;width: 200px;font-size: 2.5rem;"  id="play" > Jouer !</button>
+      <button id="voice" style="margin-top: 250px;width: 100px;cursor: pointer">
+        <img src="../sources/volume-level.png" width="50px" >
+      </button>
+    </div>
+    <div class="answer-options" style="margin-top: -110px">
+      <div class="options" id="Isocele" style="background-color: #FE4A49;height: 130px">
+        <p id="option1"> Triangle Isocel</p>
+      </div>
+      <div class="options" id="Equaliteral" style="background-color: #2AB7CA;height: 130px">
+        <p id="option2"> Triangle Equaliteral</p>
+      </div>
+      <div class="options" id="TriangleRectangle" style="background-color: #FED766;height: 130px">
+        <p id="option3">Triangle Rectangle</p>
+      </div>
+      <div class="options" id="Rectangle" style="background-color: #FE4A49;height: 130px">
+        <p id="option4">Rectangle</p>
+      </div>
+      <div class="options" id="Normal" style="background-color: #2AB7CA;height: 130px">
+        <p id="option5">Triangle Normale</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/game.js" sync></script>
+<script>
+
+
+  $('#play').click(function (){
+    $('#intro').html(`<div class="wrapper" ><canvas id="canvas" style="background: url('../sources/25348.jpg');background-size: cover" class="equation"></canvas></div>`);
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = 580;
+    canvas.width = 1100;
+      generateShape(ctx);
+      play(ctx);
+
+  })
+var on = false;
+  var voice = new Audio('../sources/8f0a841d-c88b-4496-bc7a-dc09a0e2d6d5.mp3');
+
+  $('#voice').click(function (){
+    on = !on;
+    if (on){
+      voice.play();
+    }
+    else {
+      voice.pause();
+    }
+  })
+</script>
+</body>
+
+</html>
